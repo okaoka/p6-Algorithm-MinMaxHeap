@@ -58,7 +58,7 @@ method pop-max() {
     elsif (@!nodes.elems == 2) {
 	return @!nodes.pop;
     }
-    elsif (@!nodes[1] > @!nodes[2]) {
+    elsif (@!nodes[1] >= @!nodes[2]) {
 	my $max-value = @!nodes[1];
 	@!nodes[1] = @!nodes.pop;
 	self!trickle-down(1);
