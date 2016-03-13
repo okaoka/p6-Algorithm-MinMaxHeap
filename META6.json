@@ -10,7 +10,7 @@
   "depends" : [ ],
   "description" : "double ended priority queue",
   "test-depends" : [ ],
-  "version" : "*",
+  "version" : "0.01",
   "authors" : [
     "okaoka"
   ]
