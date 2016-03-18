@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/okaoka/p6-Algorithm-MinMaxHeap.svg?branch=master)](https://travis-ci.org/okaoka/p6-Algorithm-MinMaxHeap)
+[![Build Status](https://travis-ci.org/titsuki/p6-Algorithm-MinMaxHeap.svg?branch=master)](https://travis-ci.org/titsuki/p6-Algorithm-MinMaxHeap)
 
 NAME
 ====
@@ -84,12 +84,12 @@ Returns whether the queue is empty or not.
 AUTHOR
 ======
 
-okaoka <cookbook_000@yahoo.co.jp>
+titsuki <cookbook_000@yahoo.co.jp>
 
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2016 okaoka
+Copyright 2016 titsuki
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

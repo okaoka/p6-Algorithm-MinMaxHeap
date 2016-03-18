@@ -1,6 +1,6 @@
 {
   "name" : "Algorithm::MinMaxHeap",
-  "source-url" : "git://github.com/okaoka/p6-Algorithm-MinMaxHeap.git",
+  "source-url" : "git://github.com/titsuki/p6-Algorithm-MinMaxHeap.git",
   "perl" : "6.c",
   "resources" : [ ],
   "build-depends" : [ ],
@@ -12,6 +12,6 @@
   "test-depends" : [ ],
   "version" : "0.01",
   "authors" : [
-    "okaoka"
+    "titsuki"
   ]
 }
