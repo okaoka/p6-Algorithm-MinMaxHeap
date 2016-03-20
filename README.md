@@ -52,7 +52,7 @@ SYNOPSIS
        }
     }
 
-    # specify Algorithm::MinMaxHeap::Comparable role as a item type
+    # specify Algorithm::MinMaxHeap::Comparable role as an item type
     my $class-heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
     $class-heap.insert(State.new(value => 0));
     $class-heap.insert(State.new(value => 1));
@@ -98,7 +98,7 @@ METHODS
 
     $heap.insert($item);
 
-Inserts a item to the queue.
+Inserts an item to the queue.
 
 ### pop-max()
 
