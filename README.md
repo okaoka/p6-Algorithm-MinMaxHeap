@@ -136,7 +136,7 @@ Returns whether the queue is empty or not.
 
     $heap.clear();
 
-Erases all items in the queue.
+Deletes all items in the queue.
 
 CAUTION
 =======
