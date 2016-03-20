@@ -393,14 +393,14 @@ Algorithm::MinMaxHeap - double ended priority queue
      submethod BUILD(:$!value) { }
      method compare-to(State $s) {
      	    if (self.value == $s.value) {
-	       return Order::Same;
-	    }
-	    if (self.value > $s.value) {
-	       return Order::More;
-	    }	      
-  	    if (self.value < $s.value) {
-	       return Order::Less;
-  	    }
+     	       return Order::Same;
+     	    }
+     	    if (self.value > $s.value) {
+     	       return Order::More;
+     	    }	      
+     	    if (self.value < $s.value) {
+     	       return Order::Less;
+     	    }
      }
   }
 
