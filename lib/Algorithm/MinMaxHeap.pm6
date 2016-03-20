@@ -101,16 +101,20 @@ method pop-max() {
     }
 }
 
+method is-empty() returns Bool:D {
+    return @!nodes.elems == 0 ?? True !! False;
+}
+
+method clear() {
+    @!nodes = ();
+}
+
 method !compare($lhs, $rhs) returns Order:D {
     if ($!type ~~ Cool) {
 	return $lhs minmaxheap-cmp $rhs;
     } else {
 	return $lhs.compare-to($rhs);
     }
-}
-
-method is-empty() returns Bool:D {
-    return @!nodes.elems == 0 ?? True !! False;
 }
 
 method !bubble-up($index) {
@@ -480,6 +484,12 @@ Returns a minimum value item in the queue.
        }
 
 Returns whether the queue is empty or not.
+
+=head3 clear()
+
+       $heap.clear();
+
+Erases all items in the queue.
 
 =head1 CAUTION
 
