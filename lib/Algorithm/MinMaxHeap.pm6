@@ -109,14 +109,6 @@ method clear() {
     @!nodes = ();
 }
 
-method !compare($lhs, $rhs) returns Order:D {
-    if ($!type ~~ Cool) {
-	return $lhs minmaxheap-cmp $rhs;
-    } else {
-	return $lhs.compare-to($rhs);
-    }
-}
-
 method !bubble-up($index) {
     if (self!is-minlevel($index)) {
 	if (self!has-parent($index) and (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-parent($index)] == Order::More)) {
