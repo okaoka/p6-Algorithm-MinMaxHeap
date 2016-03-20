@@ -439,7 +439,7 @@ Algorithm::MinMaxHeap is a simple implementation of double ended priority queue.
 
 =item C<<type => Algorithm::MinMaxHeap::Comparable|Cool|Str|Rat|Int|Num>>
 
-Sets either one of the type objects which you use to insert items to the heap.
+Sets either one of the type objects which you use to insert items to the queue.
 
 =head2 METHODS
 
@@ -480,6 +480,12 @@ Returns a minimum value item in the queue.
        }
 
 Returns whether the queue is empty or not.
+
+=head1 CAUTION
+
+Don't insert both numerical items and stringified items into the same queue.
+
+It will cause mixing of lexicographical order and numerical order.
 
 =head1 AUTHOR
 
