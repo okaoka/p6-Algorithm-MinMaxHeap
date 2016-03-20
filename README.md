@@ -75,7 +75,7 @@ Returns a minimum value in the queue.
 
 ### is-empty() returns Bool:D
 
-    while (not is-empty()) {
+    while (not $heap.is-empty()) {
 	         // YOUR CODE
     }
 

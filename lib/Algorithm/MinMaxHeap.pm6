@@ -424,7 +424,7 @@ Returns a minimum value in the queue.
 
 =head3 is-empty() returns Bool:D
 
-       while (not is-empty()) {
+       while (not $heap.is-empty()) {
        	     // YOUR CODE
        }
 
