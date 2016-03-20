@@ -71,12 +71,12 @@ SYNOPSIS
     $class-heap.insert(State.new(value => 7));
     $class-heap.insert(State.new(value => 8));
 
-    $heap.find-max.value.say # 8;
-    $heap.find-min.value.say # 0;
+    $class-heap.find-max.value.say # 8;
+    $class-heap.find-min.value.say # 0;
 
     my @array;
-    while (not $heap.is-empty()) {
-	    my $state = $heap.pop-max;
+    while (not $class-heap.is-empty()) {
+	    my $state = $class-heap.pop-max;
 	    @array.push($state.value);
     }
     @array.say # [8, 7, 6, 5, 4, 3, 2, 1, 0]
