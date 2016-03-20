@@ -132,6 +132,12 @@ Returns a minimum value item in the queue.
 
 Returns whether the queue is empty or not.
 
+### clear()
+
+    $heap.clear();
+
+Deletes all items in the queue.
+
 CAUTION
 =======
 
