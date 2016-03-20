@@ -361,7 +361,8 @@ Algorithm::MinMaxHeap - double ended priority queue
 =head1 SYNOPSIS
 
   use Algorithm::MinMaxHeap;
-  
+
+  # item is a Int
   my $heap = Algorithm::MinMaxHeap.new();
   $heap.insert(0);
   $heap.insert(1);
@@ -382,45 +383,95 @@ Algorithm::MinMaxHeap - double ended priority queue
   }
   @array.say # [8, 7, 6, 5, 4, 3, 2, 1, 0]
 
+  # item is a class
+
+  # sets compare-to method using Algorithm::MinMaxHeap::Comparable role
+  my class State {
+     also does Algorithm::MinMaxHeap::Comparable[State];
+     has Int $.value;
+     has $.payload;
+     submethod BUILD(:$!value) { }
+     method compare-to(State $s) {
+     	    if (self.value == $s.value) {
+	       return Order::Same;
+	    }
+	    if (self.value > $s.value) {
+	       return Order::More;
+	    }	      
+  	    if (self.value < $s.value) {
+	       return Order::Less;
+  	    }
+     }
+  }
+
+  # specify Algorithm::MinMaxHeap::Comparable role as a item type
+  my $class-heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
+  $class-heap.insert(State.new(value => 0));
+  $class-heap.insert(State.new(value => 1));
+  $class-heap.insert(State.new(value => 2));
+  $class-heap.insert(State.new(value => 3));
+  $class-heap.insert(State.new(value => 4));
+  $class-heap.insert(State.new(value => 5));
+  $class-heap.insert(State.new(value => 6));
+  $class-heap.insert(State.new(value => 7));
+  $class-heap.insert(State.new(value => 8));
+  
+  $heap.find-max.value.say # 8;
+  $heap.find-min.value.say # 0;
+
+  my @array;
+  while (not $heap.is-empty()) {
+  	my $state = $heap.pop-max;
+  	@array.push($state.value);
+  }
+  @array.say # [8, 7, 6, 5, 4, 3, 2, 1, 0]
+
 =head1 DESCRIPTION
 
 Algorithm::MinMaxHeap is a simple implementation of double ended priority queue.
 
 =head2 CONSTRUCTOR
 
-       my $heap = MinMaxHeap.new();
+       my $heap = Algorithm::MinMaxHeap.new(); # when no options are specified, it sets type => Int implicitly
+       my $heap = Algorithm::MinMaxHeap.new(%options);
+
+=head3 OPTIONS
+
+=item C<<type => Algorithm::MinMaxHeap::Comparable|Cool|Str|Rat|Int|Num>>
+
+Sets either one of the type objects which you use to insert items to the heap.
 
 =head2 METHODS
 
-=head3 insert(Int:D $value)
+=head3 insert($item)
 
-       $heap.insert($value);
+       $heap.insert($item);
 
-Inserts a value to the queue.
+Inserts a item to the queue.
 
 =head3 pop-max()
 
-       my $max-value = $heap.pop-max();
+       my $max-value-item = $heap.pop-max();
 
-Returns a maximum value in the queue and deletes this value in the queue.
+Returns a maximum value item in the queue and deletes this item in the queue.
 
 =head3 pop-min()
 
-       my $min-value = $heap.pop-min();
+       my $min-value-item = $heap.pop-min();
 
-Returns a minimum value in the queue and deletes this value in the queue.
+Returns a minimum value item in the queue and deletes this item in the queue.
 
 =head3 find-max()
 
-       my $max-value = $heap.find-max();
+       my $max-value-item = $heap.find-max();
 
-Returns a maximum value in the queue.
+Returns a maximum value item in the queue.
 
 =head3 find-min()
 
-       my $min-value = $heap.find-min();
+       my $min-value-item = $heap.find-min();
 
-Returns a minimum value in the queue.
+Returns a minimum value item in the queue.
 
 =head3 is-empty() returns Bool:D
 
