@@ -99,6 +99,7 @@ subtest {
     my class State {
 	also does Algorithm::MinMaxHeap::Comparable[State];
 	has Int $.value;
+	has $.payload;
 	submethod BUILD(:$!value) { }
 	method compare-to(State $s) {
     	    if (self.value == $s.value) {
@@ -139,6 +140,7 @@ subtest {
     my class State {
 	also does Algorithm::MinMaxHeap::Comparable[State];
 	has Int $.value;
+	has $.payload;
 	submethod BUILD(:$!value) { }
 	method compare-to(State $s) {
     	    if (self.value == $s.value) {
@@ -164,6 +166,7 @@ subtest {
     my class State {
 	also does Algorithm::MinMaxHeap::Comparable[State];
 	has Int $.value;
+	has $.payload;
 	submethod BUILD(:$!value) { }
 	method compare-to(State $s) {
     	    if (self.value == $s.value) {
@@ -189,6 +192,7 @@ subtest {
     my class State {
 	also does Algorithm::MinMaxHeap::Comparable[State];
 	has Int $.value;
+	has $.payload;
 	submethod BUILD(:$!value) { }
 	method compare-to(State $s) {
     	    if (self.value == $s.value) {
