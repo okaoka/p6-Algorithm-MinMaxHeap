@@ -12,7 +12,7 @@
   "depends" : [ ],
   "description" : "double ended priority queue",
   "test-depends" : [ ],
-  "version" : "0.06",
+  "version" : "0.07",
   "authors" : [
     "titsuki"
   ]
