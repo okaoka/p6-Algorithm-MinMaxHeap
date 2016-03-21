@@ -7,17 +7,12 @@ use Algorithm::MinMaxHeap::CmpOperator;
 has @.nodes;
 has Mu $.type;
 
-multi submethod BUILD() {
-    $!type = Int;
-}
-
-multi submethod BUILD(Mu:U :$!type) {
-    if (Algorithm::MinMaxHeap::Comparable|Cool|Str|Rat|Int|Num ~~ $!type) {
-	# nothing to do
-    } else {
-	die "ERROR: Not compatible type is specified";
-    }
-}
+multi submethod BUILD(Int:U :$!type) { Int === $!type or die "ERROR: Not compatible type is specified"; } # when no parameters are specified $!type === Int
+multi submethod BUILD(Algorithm::MinMaxHeap::Comparable:U :$!type) { Algorithm::MinMaxHeap::Comparable === $!type or die "ERROR: Not compatible type is specified"; }
+multi submethod BUILD(Str:U :$!type) { Str === $!type or die "ERROR: Not compatible type is specified"; }
+multi submethod BUILD(Rat:U :$!type) { Rat === $!type or die "ERROR: Not compatible type is specified"; }
+multi submethod BUILD(Num:U :$!type) { Num === $!type or die "ERROR: Not compatible type is specified"; }
+multi submethod BUILD(Cool:U :$!type) { Cool === $!type or die "ERROR: Not compatible type is specified"; }
 
 method insert($value) {
     if (not $value.WHAT ~~ $!type) {
