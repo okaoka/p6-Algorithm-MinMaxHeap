@@ -104,6 +104,10 @@ method clear() {
     @!nodes = ();
 }
 
+method clone {
+    nextwith(:type($.type.clone), :nodes(@.nodes.clone))
+}
+
 method !bubble-up($index) {
     if (self!is-minlevel($index)) {
 	if (self!has-parent($index) and (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-parent($index)] == Order::More)) {
