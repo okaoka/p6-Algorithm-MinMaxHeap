@@ -105,7 +105,7 @@ method clear() {
 }
 
 method clone {
-    nextwith(:type($!type), :nodes(@.nodes.clone))
+    nextwith(:type($!type.WHAT), :nodes(@.nodes.clone))
 }
 
 method !bubble-up($index) {
