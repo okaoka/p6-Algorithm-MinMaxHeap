@@ -87,7 +87,7 @@ CONSTRUCTOR
 
 ### OPTIONS
 
-  * `type => Algorithm::MinMaxHeap::Comparable|Cool|Str|Rat|Int|Num`
+  * `type => Algorithm::MinMaxHeap::Comparable|Real|Cool|Str|Rat|Int|Num`
 
 Sets either one of the type objects which you use to insert items to the queue.
 
