@@ -12,6 +12,7 @@ multi submethod BUILD(Algorithm::MinMaxHeap::Comparable:U :$!type) { Algorithm::
 multi submethod BUILD(Str:U :$!type) { Str === $!type or die "ERROR: Not compatible type is specified"; }
 multi submethod BUILD(Rat:U :$!type) { Rat === $!type or die "ERROR: Not compatible type is specified"; }
 multi submethod BUILD(Num:U :$!type) { Num === $!type or die "ERROR: Not compatible type is specified"; }
+multi submethod BUILD(Real:U :$!type) { Real === $!type or die "ERROR: Not compatible type is specified"; }
 multi submethod BUILD(Cool:U :$!type) { Cool === $!type or die "ERROR: Not compatible type is specified"; }
 
 method insert($value) {
@@ -432,7 +433,7 @@ Algorithm::MinMaxHeap is a simple implementation of double ended priority queue.
 
 =head3 OPTIONS
 
-=item C<<type => Algorithm::MinMaxHeap::Comparable|Cool|Str|Rat|Int|Num>>
+=item C<<type => Algorithm::MinMaxHeap::Comparable|Real|Cool|Str|Rat|Int|Num>>
 
 Sets either one of the type objects which you use to insert items to the queue.
 

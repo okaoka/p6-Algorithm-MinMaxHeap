@@ -9,11 +9,12 @@ lives-ok { my $heap = Algorithm::MinMaxHeap.new(type => Str); }
 lives-ok { my $heap = Algorithm::MinMaxHeap.new(type => Rat); }
 lives-ok { my $heap = Algorithm::MinMaxHeap.new(type => Int); }
 lives-ok { my $heap = Algorithm::MinMaxHeap.new(type => Num); }
+lives-ok { my $heap = Algorithm::MinMaxHeap.new(type => Real); }
 dies-ok { my $heap = Algorithm::MinMaxHeap.new(type => Range); }, "It shouldn't set Range";
 dies-ok { my $heap = Algorithm::MinMaxHeap.new(type => Any); }, "It shouldn't set Any";
 dies-ok { my $heap = Algorithm::MinMaxHeap.new(type => Mu); }, "It shouldn't set Mu";
 dies-ok { my $heap = Algorithm::MinMaxHeap.new(type => Numeric); }, "It shouldn't set Numeric";
-dies-ok { my $heap = Algorithm::MinMaxHeap.new(type => Real); }, "It shouldn't set Real";
+
 
 {
     my $heap = Algorithm::MinMaxHeap.new();
@@ -43,6 +44,11 @@ dies-ok { my $heap = Algorithm::MinMaxHeap.new(type => Real); }, "It shouldn't s
 {
     my $heap = Algorithm::MinMaxHeap.new(type => Num);
     is $heap.type, Num, "It should be Num";
+}
+
+{
+    my $heap = Algorithm::MinMaxHeap.new(type => Real);
+    is $heap.type, Real, "It should be Real";
 }
 
 done-testing;
