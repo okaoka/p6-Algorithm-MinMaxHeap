@@ -148,7 +148,7 @@ It will cause mixing of lexicographical order and numerical order.
 AUTHOR
 ======
 
-titsuki <cookbook_000@yahoo.co.jp>
+titsuki <titsuki@cpan.org>
 
 COPYRIGHT AND LICENSE
 =====================
