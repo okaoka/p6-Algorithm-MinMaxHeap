@@ -357,6 +357,7 @@ Algorithm::MinMaxHeap - double ended priority queue
 =head1 SYNOPSIS
 
   use Algorithm::MinMaxHeap;
+  use Algorithm::MinMaxHeap::Comparable;
 
   # item is a Int
   my $heap = Algorithm::MinMaxHeap.new();
