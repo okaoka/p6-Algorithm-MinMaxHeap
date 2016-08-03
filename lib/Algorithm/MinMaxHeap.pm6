@@ -8,8 +8,8 @@ has @.nodes;
 has $.type;
 
 multi submethod BUILD(:$!type! where * === any Int|Algorithm::MinMaxHeap::Comparable|Str|Rat|Num|Real|Cool) { }
-multi submethod BUILD(:$!type! where * === none Int|Algorithm::MinMaxHeap::Comparable|Str|Rat|Num|Real|Cool) { die; }
-multi submethod BUILD(Mu :$!type!) { die; }
+multi submethod BUILD(:$!type! where * === none Int|Algorithm::MinMaxHeap::Comparable|Str|Rat|Num|Real|Cool) { die "ERROR: Not compatible type is specified"; }
+multi submethod BUILD(Mu :$!type!) { die "ERROR: Not compatible type is specified"; }
 multi submethod BUILD() { $!type = Int; } # when no parameters are specified $!type === Int
 
 method insert($value) {
