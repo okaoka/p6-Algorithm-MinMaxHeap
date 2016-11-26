@@ -17,12 +17,12 @@ method find-min() {
     if (@!nodes.elems >= 1) {
 	return @!nodes[0];
     }
-    return Any;
+    return Type;
 }
 
 method find-max() {
     if (@!nodes.elems == 0) {
-	return Any;
+        return Type;
     }
     elsif (@!nodes.elems == 1) {
 	return @!nodes[0];
@@ -41,7 +41,7 @@ method find-max() {
 
 method pop-min() {
     if (@!nodes.elems == 0) {
-	return Any;
+        return Type;
     }
     
     my $min-value = @!nodes[0];
@@ -57,7 +57,7 @@ method pop-min() {
 
 method pop-max() {
     if (@!nodes.elems == 0) {
-	return Any;
+        return Type;
     }
     elsif (@!nodes.elems == 1) {
 	return @!nodes.shift;
