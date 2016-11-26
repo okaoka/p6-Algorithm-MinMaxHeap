@@ -73,7 +73,7 @@ use Algorithm::MinMaxHeap;
 
     my @actual;
     while (not $heap.is-empty()) {
-	@actual.push($heap.pop-min.value);
+        @actual.push($heap.pop-min.value);
     }
     is @actual, [0,1,2,3,4,5,6,7,8], "It should return ascending array";
 }
