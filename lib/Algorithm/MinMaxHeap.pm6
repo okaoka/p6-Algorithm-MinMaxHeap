@@ -14,23 +14,23 @@ method insert($value) {
 }
 
 method find-min() {
-    if (@!nodes.elems >= 1) {
+    if @!nodes.elems >= 1 {
         return @!nodes[0];
     }
     return Type;
 }
 
 method find-max() {
-    if (@!nodes.elems == 0) {
+    if @!nodes.elems == 0 {
         return Type;
     }
-    elsif (@!nodes.elems == 1) {
+    elsif @!nodes.elems == 1 {
         return @!nodes[0];
     }
-    elsif (@!nodes.elems == 2) {
+    elsif @!nodes.elems == 2 {
         return @!nodes[1];
     } else {
-        if (@!nodes[1] minmaxheap-cmp @!nodes[2] == Order::More) {
+        if @!nodes[1] minmaxheap-cmp @!nodes[2] == Order::More {
             return @!nodes[1];
         }
         else {
@@ -40,13 +40,13 @@ method find-max() {
 }
 
 method pop-min() {
-    if (@!nodes.elems == 0) {
+    if @!nodes.elems == 0 {
         return Type;
     }
     
     my $min-value = @!nodes[0];
 
-    if (@!nodes.elems > 1) {
+    if @!nodes.elems > 1 {
         @!nodes[0] = @!nodes.pop;
     } else {
         @!nodes.pop;
@@ -56,24 +56,24 @@ method pop-min() {
 }
 
 method pop-max() {
-    if (@!nodes.elems == 0) {
+    if @!nodes.elems == 0 {
         return Type;
     }
-    elsif (@!nodes.elems == 1) {
+    elsif @!nodes.elems == 1 {
         return @!nodes.shift;
     }
-    elsif (@!nodes.elems == 2) {
+    elsif @!nodes.elems == 2 {
         return @!nodes.pop;
     }
-    elsif (@!nodes[1] minmaxheap-cmp @!nodes[2] == Order::Same|Order::More) {
+    elsif @!nodes[1] minmaxheap-cmp @!nodes[2] == Order::Same|Order::More {
         my $max-value = @!nodes[1];
         @!nodes[1] = @!nodes.pop;
         self!trickle-down(1);
         return $max-value;
     }
-    elsif (@!nodes[1] minmaxheap-cmp @!nodes[2] == Order::Less) {
+    elsif @!nodes[1] minmaxheap-cmp @!nodes[2] == Order::Less {
         my $max-value = @!nodes[2];
-        if (@!nodes.elems > 3) {
+        if @!nodes.elems > 3 {
             @!nodes[2] = @!nodes.pop;
         } else {
             @!nodes.pop;
@@ -87,11 +87,11 @@ method pop-max() {
     }
 }
 
-method is-empty() returns Bool:D {
+method is-empty returns Bool:D {
     return @!nodes.elems == 0 ?? True !! False;
 }
 
-method clear() {
+method clear {
     @!nodes = ();
 }
 
@@ -100,15 +100,15 @@ method clone {
 }
 
 method !bubble-up($index) {
-    if (self!is-minlevel($index)) {
-        if (self!has-parent($index) and (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-parent($index)] == Order::More)) {
+    if self!is-minlevel($index) {
+        if self!has-parent($index) and (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-parent($index)] == Order::More) {
             self!swap(@!nodes[$index], @!nodes[self!find-parent($index)]);
             self!bubble-up-max(self!find-parent($index));
         } else {
             self!bubble-up-min($index);
         }
     } else {
-        if (self!has-parent($index) and (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-parent($index)] == Order::Less)) {
+        if self!has-parent($index) and (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-parent($index)] == Order::Less) {
             self!swap(@!nodes[$index], @!nodes[self!find-parent($index)]);
             self!bubble-up-min(self!find-parent($index));
         } else {
@@ -118,8 +118,8 @@ method !bubble-up($index) {
 }
 
 method !bubble-up-min($index) {
-    if (self!has-grandparent($index)) {
-        if (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-grandparent($index)] == Order::Less) {
+    if self!has-grandparent($index) {
+        if @!nodes[$index] minmaxheap-cmp @!nodes[self!find-grandparent($index)] == Order::Less {
             self!swap(@!nodes[$index], @!nodes[self!find-grandparent($index)]);
             self!bubble-up-min(self!find-grandparent($index));
         }
@@ -127,8 +127,8 @@ method !bubble-up-min($index) {
 }
 
 method !bubble-up-max($index) {
-    if (self!has-grandparent($index)) {
-        if (@!nodes[$index] minmaxheap-cmp @!nodes[self!find-grandparent($index)] == Order::More) {
+    if self!has-grandparent($index) {
+        if @!nodes[$index] minmaxheap-cmp @!nodes[self!find-grandparent($index)] == Order::More {
             self!swap(@!nodes[$index], @!nodes[self!find-grandparent($index)]);
             self!bubble-up-max(self!find-grandparent($index));
         }
@@ -136,7 +136,7 @@ method !bubble-up-max($index) {
 }
 
 method !trickle-down(Int:D $index) {
-    if (self!is-minlevel($index)) {
+    if self!is-minlevel($index) {
         self!trickle-down-min($index);
     } else {
         self!trickle-down-max($index);
@@ -144,38 +144,38 @@ method !trickle-down(Int:D $index) {
 }
 
 method !trickle-down-min(Int:D $index) {
-    return if (not self!has-child($index));
+    return if not self!has-child($index);
     my %response = self!find-smallest($index);
     my ($smallest-index, $is-child) = %response<smallest-index>, %response<is-child>;
-    if (not $is-child) {
-        if (@!nodes[$smallest-index] minmaxheap-cmp @!nodes[$index] == Order::Less) {
+    if not $is-child {
+        if @!nodes[$smallest-index] minmaxheap-cmp @!nodes[$index] == Order::Less {
             self!swap(@!nodes[$smallest-index], @!nodes[$index]);
-            if (@!nodes[$smallest-index] minmaxheap-cmp @!nodes[self!find-parent($smallest-index)] == Order::More) {
+            if @!nodes[$smallest-index] minmaxheap-cmp @!nodes[self!find-parent($smallest-index)] == Order::More {
                 self!swap(@!nodes[$smallest-index], @!nodes[self!find-parent($smallest-index)]);
             }
             self!trickle-down-min($smallest-index);
         }
     } else {
-        if (@!nodes[$smallest-index] minmaxheap-cmp @!nodes[$index] == Order::Less) {
+        if @!nodes[$smallest-index] minmaxheap-cmp @!nodes[$index] == Order::Less {
             self!swap(@!nodes[$smallest-index], @!nodes[$index]);
         }
     }
 }
 
 method !trickle-down-max(Int:D $index) {
-    return if (not self!has-child($index));
+    return if not self!has-child($index);
     my %response = self!find-largest($index);
     my ($largest-index, $is-child) = %response<largest-index>, %response<is-child>;
-    if (not $is-child) {
-        if (@!nodes[$largest-index] minmaxheap-cmp @!nodes[$index] == Order::More) {
+    if not $is-child {
+        if @!nodes[$largest-index] minmaxheap-cmp @!nodes[$index] == Order::More {
             self!swap(@!nodes[$largest-index], @!nodes[$index]);
-            if (@!nodes[$largest-index] minmaxheap-cmp @!nodes[self!find-parent($largest-index)] == Order::Less) {
+            if @!nodes[$largest-index] minmaxheap-cmp @!nodes[self!find-parent($largest-index)] == Order::Less {
                 self!swap(@!nodes[$largest-index], @!nodes[self!find-parent($largest-index)]);
             }
             self!trickle-down-max($largest-index);
         }
     } else {
-        if (@!nodes[$largest-index] minmaxheap-cmp @!nodes[$index] == Order::More) {
+        if @!nodes[$largest-index] minmaxheap-cmp @!nodes[$index] == Order::More {
             self!swap(@!nodes[$largest-index], @!nodes[$index]);
         }
     }
@@ -191,46 +191,46 @@ method !find-smallest(Int:D $index) {
     $smallest-index = $index;
     $is-child = False;
     
-    if (self!has-left-child($index)) {
+    if self!has-left-child($index) {
         my $left-child = self!find-left-child($index);
-        if ((not $smallest-value.defined) or $smallest-value minmaxheap-cmp @!nodes[$left-child] == Order::More) {
+        if not $smallest-value.defined or $smallest-value minmaxheap-cmp @!nodes[$left-child] == Order::More {
             $smallest-value = @!nodes[$left-child];
             $smallest-index = $left-child;
             $is-child = True;
         }
 
-        if (self!has-left-child($left-child)) {
-            if ((not $smallest-value.defined) or $smallest-value minmaxheap-cmp @!nodes[self!find-left-child($left-child)] == Order::More) {
+        if self!has-left-child($left-child) {
+            if not $smallest-value.defined or $smallest-value minmaxheap-cmp @!nodes[self!find-left-child($left-child)] == Order::More {
                 $smallest-value = @!nodes[self!find-left-child($left-child)];
                 $smallest-index = self!find-left-child($left-child);
                 $is-child = False;
             }
         }
-        if (self!has-right-child($left-child)) {
-            if ((not $smallest-value.defined) or $smallest-value minmaxheap-cmp @!nodes[self!find-right-child($left-child)] == Order::More) {
+        if self!has-right-child($left-child) {
+            if not $smallest-value.defined or $smallest-value minmaxheap-cmp @!nodes[self!find-right-child($left-child)] == Order::More {
                 $smallest-value = @!nodes[self!find-right-child($left-child)];
                 $smallest-index = self!find-right-child($left-child);
                 $is-child = False;
             }
         }
     }
-    if (self!has-right-child($index)) {
+    if self!has-right-child($index) {
         my $right-child = self!find-right-child($index);
-        if ((not $smallest-value.defined) or $smallest-value minmaxheap-cmp @!nodes[$right-child] == Order::More) {
+        if not $smallest-value.defined or $smallest-value minmaxheap-cmp @!nodes[$right-child] == Order::More {
             $smallest-value = @!nodes[$right-child];
             $smallest-index = $right-child;
             $is-child = True;
         }
         
-        if (self!has-left-child($right-child)) {
-            if ((not $smallest-value.defined) or $smallest-value minmaxheap-cmp @!nodes[self!find-left-child($right-child)] == Order::More) {
+        if self!has-left-child($right-child) {
+            if not $smallest-value.defined or $smallest-value minmaxheap-cmp @!nodes[self!find-left-child($right-child)] == Order::More {
                 $smallest-value = @!nodes[self!find-left-child($right-child)];
                 $smallest-index = self!find-left-child($right-child);
                 $is-child = False;
             }
         }
-        if (self!has-right-child($right-child)) {
-            if ((not $smallest-value.defined) or $smallest-value minmaxheap-cmp @!nodes[self!find-right-child($right-child)] == Order::More) {
+        if self!has-right-child($right-child) {
+            if not $smallest-value.defined or $smallest-value minmaxheap-cmp @!nodes[self!find-right-child($right-child)] == Order::More {
                 $smallest-value = @!nodes[self!find-right-child($right-child)];
                 $smallest-index = self!find-right-child($right-child);
                 $is-child = False;
@@ -247,46 +247,46 @@ method !find-largest(Int:D $index) {
     $largest-index = $index;
     $is-child = False;
     
-    if (self!has-left-child($index)) {
+    if self!has-left-child($index) {
         my $left-child = self!find-left-child($index);
-        if ((not $largest-value.defined) or $largest-value minmaxheap-cmp @!nodes[$left-child] == Order::Less) {
+        if not $largest-value.defined or $largest-value minmaxheap-cmp @!nodes[$left-child] == Order::Less {
             $largest-value = @!nodes[$left-child];
             $largest-index = $left-child;
             $is-child = True;
         }
 
-        if (self!has-left-child($left-child)) {
-            if ((not $largest-value.defined) or $largest-value minmaxheap-cmp @!nodes[self!find-left-child($left-child)] == Order::Less) {
+        if self!has-left-child($left-child) {
+            if not $largest-value.defined or $largest-value minmaxheap-cmp @!nodes[self!find-left-child($left-child)] == Order::Less {
                 $largest-value = @!nodes[self!find-left-child($left-child)];
                 $largest-index = self!find-left-child($left-child);
                 $is-child = False;
             }
         }
-        if (self!has-right-child($left-child)) {
-            if ((not $largest-value.defined) or $largest-value minmaxheap-cmp @!nodes[self!find-right-child($left-child)] == Order::Less) {
+        if self!has-right-child($left-child) {
+            if not $largest-value.defined or $largest-value minmaxheap-cmp @!nodes[self!find-right-child($left-child)] == Order::Less {
                 $largest-value = @!nodes[self!find-right-child($left-child)];
                 $largest-index = self!find-right-child($left-child);
                 $is-child = False;
             }
         }
     }
-    if (self!has-right-child($index)) {
+    if self!has-right-child($index) {
         my $right-child = self!find-right-child($index);
-        if ((not $largest-value.defined) or $largest-value minmaxheap-cmp @!nodes[$right-child] == Order::Less) {
+        if not $largest-value.defined or $largest-value minmaxheap-cmp @!nodes[$right-child] == Order::Less {
             $largest-value = @!nodes[$right-child];
             $largest-index = $right-child;
             $is-child = True;
         }
         
-        if (self!has-left-child($right-child)) {
-            if ((not $largest-value.defined) or $largest-value minmaxheap-cmp @!nodes[self!find-left-child($right-child)] == Order::Less) {
+        if self!has-left-child($right-child) {
+            if not $largest-value.defined or $largest-value minmaxheap-cmp @!nodes[self!find-left-child($right-child)] == Order::Less {
                 $largest-value = @!nodes[self!find-left-child($right-child)];
                 $largest-index = self!find-left-child($right-child);
                 $is-child = False;
             }
         }
-        if (self!has-right-child($right-child)) {
-            if ((not $largest-value.defined) or $largest-value minmaxheap-cmp @!nodes[self!find-right-child($right-child)] == Order::Less) {
+        if self!has-right-child($right-child) {
+            if not $largest-value.defined or $largest-value minmaxheap-cmp @!nodes[self!find-right-child($right-child)] == Order::Less {
                 $largest-value = @!nodes[self!find-right-child($right-child)];
                 $largest-index = self!find-right-child($right-child);
                 $is-child = False;
@@ -298,7 +298,7 @@ method !find-largest(Int:D $index) {
 }
 
 method !has-grandparent(Int:D $index) returns Bool:D {
-    return False if (not self!has-parent($index));
+    return False if not self!has-parent($index);
     return self!has-parent(self!find-parent($index));
 }
 
@@ -311,7 +311,7 @@ method !has-parent(Int:D $index) returns Bool:D {
 }
 
 method !find-parent(Int:D $index) returns Int:D {
-    return (($index - 1) / 2).Int;
+    return ($index - 1) div 2;
 }
 
 method !has-left-child(Int:D $index) returns Bool:D {
@@ -335,7 +335,7 @@ method !find-right-child(Int:D $index) returns Int:D {
 }
 
 method !is-minlevel(Int:D $index) returns Bool:D {
-    return (($index + 1).log(2).Int % 2 == 0 ?? True !! False);
+    return (($index + 1).log(2).Int %% 2 ?? True !! False);
 }
 
 =begin pod
@@ -382,15 +382,15 @@ Algorithm::MinMaxHeap - double ended priority queue
      has $.payload;
      submethod BUILD(:$!value) { }
      method compare-to(State $s) {
-     	    if (self.value == $s.value) {
-     	       return Order::Same;
-     	    }
-     	    if (self.value > $s.value) {
-     	       return Order::More;
-     	    }	      
-     	    if (self.value < $s.value) {
-     	       return Order::Less;
-     	    }
+            if self.value == $s.value {
+               return Order::Same;
+            }
+            if self.value > $s.value {
+               return Order::More;
+            }
+            if self.value < $s.value {
+               return Order::Less;
+            }
      }
   }
 

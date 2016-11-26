@@ -46,15 +46,15 @@ EXAMPLE2
        has $.payload;
        submethod BUILD(:$!value) { }
        method compare-to(State $s) {
-   	        if (self.value == $s.value) {
-   	           return Order::Same;
-   	        }
-   	        if (self.value > $s.value) {
-   	           return Order::More;
-   	        }	      
-   	        if (self.value < $s.value) {
-   	           return Order::Less;
-   	        }
+              if self.value == $s.value {
+                 return Order::Same;
+              }
+              if self.value > $s.value {
+                 return Order::More;
+              }
+              if self.value < $s.value {
+                 return Order::Less;
+              }
        }
     }
 
