@@ -187,7 +187,7 @@ method !swap($lhs is raw, $rhs is raw) {
 
 method !find-smallest(Int:D $index) {
     my ($smallest-value, $smallest-index, $is-child);
-    $smallest-value = Any;
+    $smallest-value = Type;
     $smallest-index = $index;
     $is-child = False;
     
@@ -243,7 +243,7 @@ method !find-smallest(Int:D $index) {
 
 method !find-largest(Int:D $index) {
     my ($largest-value, $largest-index, $is-child);
-    $largest-value = Any;
+    $largest-value = Type;
     $largest-index = $index;
     $is-child = False;
     
