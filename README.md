@@ -8,11 +8,12 @@ Algorithm::MinMaxHeap - double ended priority queue
 SYNOPSIS
 ========
 
-    use Algorithm::MinMaxHeap;
-    use Algorithm::MinMaxHeap::Comparable;
+EXAMPLE1
+--------
 
-    # item is a Int
-    my $heap = Algorithm::MinMaxHeap.new();
+    use Algorithm::MinMaxHeap;
+
+    my $heap = Algorithm::MinMaxHeap[Int].new;
     $heap.insert(0);
     $heap.insert(1);
     $heap.insert(2);
@@ -32,7 +33,11 @@ SYNOPSIS
     }
     @array.say # [8, 7, 6, 5, 4, 3, 2, 1, 0]
 
-    # item is a class
+EXAMPLE2
+--------
+
+    use Algorithm::MinMaxHeap;
+    use Algorithm::MinMaxHeap::Comparable;
 
     # sets compare-to method using Algorithm::MinMaxHeap::Comparable role
     my class State {
@@ -54,7 +59,7 @@ SYNOPSIS
     }
 
     # specify Algorithm::MinMaxHeap::Comparable role as an item type
-    my $class-heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
+    my $class-heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
     $class-heap.insert(State.new(value => 0));
     $class-heap.insert(State.new(value => 1));
     $class-heap.insert(State.new(value => 2));
@@ -83,14 +88,17 @@ Algorithm::MinMaxHeap is a simple implementation of double ended priority queue.
 CONSTRUCTOR
 -----------
 
-    my $heap = Algorithm::MinMaxHeap.new(); # when no options are specified, it sets type => Int implicitly
-    my $heap = Algorithm::MinMaxHeap.new(%options);
+Defined as:
 
-### OPTIONS
+    role Algorithm::MinMaxHeap[::Type] {}
 
-  * `type => Algorithm::MinMaxHeap::Comparable|Real|Cool|Str|Rat|Int|Num`
+Usage:
 
-Sets either one of the type objects which you use to insert items to the queue.
+    my $heap = Algorithm::MinMaxHeap[Int].new;
+    my $heap = Algorithm::MinMaxHeap[Rat].new;
+    my $heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
+
+Sets a type as `::Type` parameter which you use to insert items to the queue.
 
 METHODS
 -------
