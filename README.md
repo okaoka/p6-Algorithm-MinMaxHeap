@@ -3,7 +3,7 @@
 NAME
 ====
 
-Algorithm::MinMaxHeap - double ended priority queue
+Algorithm::MinMaxHeap - A Perl 6 implementation of double ended priority queue
 
 SYNOPSIS
 ========
