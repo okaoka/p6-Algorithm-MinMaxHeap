@@ -4,7 +4,7 @@ use Algorithm::MinMaxHeap;
 use Algorithm::MinMaxHeap::Comparable;
 
 subtest {
-    my $heap = Algorithm::MinMaxHeap.new();
+    my $heap = Algorithm::MinMaxHeap[Real].new;
     $heap.insert(0);
     $heap.insert(1);
     $heap.insert(2);
@@ -27,7 +27,7 @@ subtest {
 }, "Given a constructor with no parameters, It should insert Int items";
 
 subtest {
-    my $heap = Algorithm::MinMaxHeap.new(type => Cool);
+    my $heap = Algorithm::MinMaxHeap[Real].new;
     $heap.insert(0);
     $heap.insert(1.1);
     $heap.insert(2);
@@ -50,7 +50,7 @@ subtest {
 }, "Given a constructor with no parameters, It should insert Int items";
 
 subtest {
-    my $heap = Algorithm::MinMaxHeap.new(type => Cool);
+    my $heap = Algorithm::MinMaxHeap[Real].new;
     $heap.insert(0);
     $heap.insert(1.1e0);
     $heap.insert(2);
@@ -73,7 +73,7 @@ subtest {
 }, "Given a constructor with \"type => Cool\" option, It should insert Int/Num items";
 
 subtest {
-    my $heap = Algorithm::MinMaxHeap.new(type => Cool);
+    my $heap = Algorithm::MinMaxHeap[Real].new;
     $heap.insert(0);
     $heap.insert(1.1e0);
     $heap.insert(2);
@@ -96,7 +96,7 @@ subtest {
 }, "Given a constructor with \"type => Cool\" option, It should insert Int/Num/Rat items";
 
 subtest {
-    my $heap = Algorithm::MinMaxHeap.new(type => Real);
+    my $heap = Algorithm::MinMaxHeap[Real].new;
     $heap.insert(0);
     $heap.insert(1.1e0);
     $heap.insert(2);
@@ -119,7 +119,7 @@ subtest {
 }, "Given a constructor with \"type => Real\" option, It should insert Int/Num items";
 
 subtest {
-    my $heap = Algorithm::MinMaxHeap.new(type => Real);
+    my $heap = Algorithm::MinMaxHeap[Cool].new;
     $heap.insert(0);
     $heap.insert(1.1e0);
     $heap.insert(2);
@@ -159,7 +159,7 @@ subtest {
     	    }
     	}
     }
-    my $heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
+    my $heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
     
     $heap.insert(State.new(value => 8));
     $heap.insert(State.new(value => 0));
@@ -200,7 +200,7 @@ subtest {
     	    }
     	}
     }
-    my $heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
+    my $heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
     
     $heap.insert(State.new(value => 8));
     $heap.insert(State.new(value => 0));
@@ -226,7 +226,7 @@ subtest {
     	    }
     	}
     }
-    my $heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
+    my $heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
     
     $heap.insert(State.new(value => 8));
     $heap.insert(State.new(value => 0));
@@ -252,7 +252,7 @@ subtest {
     	    }
     	}
     }
-    my $heap = Algorithm::MinMaxHeap.new(type => Algorithm::MinMaxHeap::Comparable);
+    my $heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
     
     $heap.insert(State.new(value => 8));
     $heap.insert(State.new(value => 0));

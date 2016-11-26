@@ -1,21 +1,14 @@
 use v6;
-unit class Algorithm::MinMaxHeap;
+unit role Algorithm::MinMaxHeap[::Type];
 
 use Algorithm::MinMaxHeap::Comparable;
 use Algorithm::MinMaxHeap::CmpOperator;
 
-has @.nodes;
-has $.type;
+has Type @.nodes;
 
-multi submethod BUILD(:$!type! where * === any Int|Algorithm::MinMaxHeap::Comparable|Str|Rat|Num|Real|Cool) { }
-multi submethod BUILD(:$!type! where * === none Int|Algorithm::MinMaxHeap::Comparable|Str|Rat|Num|Real|Cool) { die "ERROR: Not compatible type is specified"; }
-multi submethod BUILD(Mu :$!type!) { die "ERROR: Not compatible type is specified"; }
-multi submethod BUILD() { $!type = Int; } # when no parameters are specified $!type === Int
+submethod BUILD() {}
 
 method insert($value) {
-    if (not $value.WHAT ~~ $!type) {
-	die "ERROR: Not compatible type is inserted";
-    }
     @!nodes.push($value);
     self!bubble-up(@!nodes.elems - 1);
 }
