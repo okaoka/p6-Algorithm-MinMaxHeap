@@ -98,7 +98,12 @@ Usage:
     my $heap = Algorithm::MinMaxHeap[Rat].new;
     my $heap = Algorithm::MinMaxHeap[Algorithm::MinMaxHeap::Comparable].new;
 
-Sets a type as `::Type` parameter which you use to insert items to the queue.
+Sets `::Type` parameter, where `::Type` is a type of nodes in the queue.
+
+Use `subset` for creating complex type constraints:
+
+    my subset MyCool of Cool where Int|Num|Rat;
+    my $heap = Algorithm::MinMaxHeap[MyCool].new;
 
 METHODS
 -------
