@@ -59,7 +59,7 @@ subtest {
     my subset MyCool of Cool where Int|Num|Rat;
     my $heap = Algorithm::MinMaxHeap[MyCool].new;
     dies-ok { $heap.insert("Perl6 is fun"); }
-}, "Given a constructor with a MyCool(i.e. Int|Num|Rat) parameter, It should insert Str items";
+}, "Given a constructor with a MyCool(i.e. Int|Num|Rat) parameter, It shouldn't insert Str items";
 
 subtest {
     my class State {
