@@ -365,9 +365,7 @@ Algorithm::MinMaxHeap - A Perl 6 implementation of double ended priority queue
   $heap.find-min.say # 0;
 
   my @array;
-  while (not $heap.is-empty()) {
-  	@array.push($heap.pop-max);
-  }
+  @array.push($heap.pop-max) until $heap.is-empty;
   @array.say # [8, 7, 6, 5, 4, 3, 2, 1, 0]
 
 =head2 EXAMPLE2
@@ -382,13 +380,13 @@ Algorithm::MinMaxHeap - A Perl 6 implementation of double ended priority queue
      has $.payload;
      submethod BUILD(:$!value) { }
      method compare-to(State $s) {
-            if self.value == $s.value {
+            if $!value == $s.value {
                return Order::Same;
             }
-            if self.value > $s.value {
+            if $!value > $s.value {
                return Order::More;
             }
-            if self.value < $s.value {
+            if $!value < $s.value {
                return Order::Less;
             }
      }
@@ -410,7 +408,7 @@ Algorithm::MinMaxHeap - A Perl 6 implementation of double ended priority queue
   $class-heap.find-min.value.say # 0;
 
   my @array;
-  while (not $class-heap.is-empty()) {
+  until $class-heap.is-empty {
   	my $state = $class-heap.pop-max;
   	@array.push($state.value);
   }
