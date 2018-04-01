@@ -1,5 +1,5 @@
 use v6;
-unit role Algorithm::MinMaxHeap[::Type];
+unit role Algorithm::MinMaxHeap:ver<0.13.3>[::Type];
 
 use Algorithm::MinMaxHeap::Comparable;
 use Algorithm::MinMaxHeap::CmpOperator;
