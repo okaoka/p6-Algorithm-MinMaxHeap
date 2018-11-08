@@ -2,6 +2,12 @@ Revision history for Algorithm-MinMaxHeap
 
 {{$NEXT}}
 
+0.13.4  2018-11-09T01:45:19+09:00
+    - Fixes:
+        - Delete zef build . [#23]
+    - Additions:
+    - Efficiency:
+
 0.13.3  2018-04-02T00:44:04+09:00
     - Fixes:
         - Fix META6.json

@@ -1,6 +1,6 @@
 use v6;
 
-unit module Algorithm::MinMaxHeap::CmpOperator:ver<0.13.3>;
+unit module Algorithm::MinMaxHeap::CmpOperator:ver<0.13.4>;
 
 use Algorithm::MinMaxHeap::Comparable;
 
