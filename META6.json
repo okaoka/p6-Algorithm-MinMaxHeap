@@ -18,5 +18,5 @@
   "source-url" : "git://github.com/titsuki/raku-Algorithm-MinMaxHeap.git",
   "tags" : [ ],
   "test-depends" : [ ],
-  "version" : "0.13.4"
+  "version" : "0.13.5"
 }
