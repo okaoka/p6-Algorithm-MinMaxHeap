@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/titsuki/p6-Algorithm-MinMaxHeap.svg?branch=master)](https://travis-ci.org/titsuki/p6-Algorithm-MinMaxHeap)
+[![Build Status](https://travis-ci.org/titsuki/raku-Algorithm-MinMaxHeap.svg?branch=master)](https://travis-ci.org/titsuki/raku-Algorithm-MinMaxHeap)
 
 NAME
 ====
 
-Algorithm::MinMaxHeap - A Perl 6 implementation of double ended priority queue
+Algorithm::MinMaxHeap - A Raku implementation of double ended priority queue
 
 SYNOPSIS
 ========

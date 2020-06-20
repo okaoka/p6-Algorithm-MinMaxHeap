@@ -342,7 +342,7 @@ method !is-minlevel(Int:D $index) returns Bool:D {
 
 =head1 NAME
 
-Algorithm::MinMaxHeap - A Perl 6 implementation of double ended priority queue
+Algorithm::MinMaxHeap - A Raku implementation of double ended priority queue
 
 =head1 SYNOPSIS
 
